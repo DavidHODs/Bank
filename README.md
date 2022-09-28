@@ -10,7 +10,7 @@ This md file will serve as a documentation. It will also serve as a blog post do
 
 ## Technologies
 
-Programming Language - GoLang with Gin Framework
+Programming Language - GoLang (v 1.18) with Gin Framework
 Database - PostgreSQL
 Operating System - Linux (Ubuntu Distribution)
 Container - Docker
