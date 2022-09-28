@@ -19,6 +19,7 @@ CI/CD - Github Actions
 Cloud Services - AWS
 IAC - Terraform
 Configuration Management - Ansible
+Type Safe Idiomatic Code Generation - sqlc
 
 ## MakeFile
 

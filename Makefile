@@ -12,4 +12,7 @@ migrateUp:
 migrateDown: 
 	migrate -path db/migration/ -database "postgresql://${target1}:${target2}@localhost:5432/bank" -verbose down
 
-PHONY: schemaInit migrateUp migrateDown
+sqlc:
+	sqlc generate
+
+PHONY: schemaInit migrateUp migrateDown sqlc
