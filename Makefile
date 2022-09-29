@@ -15,4 +15,7 @@ migrateDown:
 sqlc:
 	sqlc generate
 
-PHONY: schemaInit migrateUp migrateDown sqlc
+test:
+	go test -v -cover ./...
+
+PHONY: schemaInit migrateUp migrateDown sqlc test
