@@ -2,6 +2,7 @@ package main_test
 
 import (
 	"context"
+	"database/sql"
 	"testing"
 	"time"
 
@@ -68,4 +69,16 @@ func TestUpdateTransfer(t *testing.T) {
 	require.Equal(t, entry1.ToAccountID, entry2.ToAccountID)
 	require.Equal(t, arg.Amount, entry2.Amount)
 	require.WithinDuration(t, entry1.CreatedAt, entry2.CreatedAt, time.Second)
+}
+
+func TestDeleteTransfer(t *testing.T) {
+	transfer1 := createRandomTransfer(t)
+	err := utils.TestQueries.DeleteTransfer(context.Background(), transfer1.ID)
+	require.NoError(t, err)
+
+	transfer2, err := utils.TestQueries.GetTransfer(context.Background(), transfer1.ID)
+	require.Error(t, err)
+
+	require.EqualError(t, err, sql.ErrNoRows.Error())
+	require.Empty(t, transfer2)
 }
