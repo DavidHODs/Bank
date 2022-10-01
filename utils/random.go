@@ -45,3 +45,8 @@ func RandomCurrency() string {
 	currencies := []string{"EUR", "USD", "NGN", "CAD"}
 	return currencies[rand.Intn(len(currencies))]
 }
+
+// RandomAccountRow returns a random account id from the created accounts list
+func RandomAccountRow() int64 {
+	return RandomInteger(1, TotalRows())
+}

@@ -108,6 +108,17 @@ func (q *Queries) ListAccounts(ctx context.Context, arg ListAccountsParams) ([]A
 	return items, nil
 }
 
+const totalRows = `-- name: TotalRows :one
+SELECT COUNT(id) from accounts
+`
+
+func (q *Queries) TotalRows(ctx context.Context) (int64, error) {
+	row := q.db.QueryRowContext(ctx, totalRows)
+	var count int64
+	err := row.Scan(&count)
+	return count, err
+}
+
 const updateAccount = `-- name: UpdateAccount :one
 UPDATE accounts
 set balance = $2

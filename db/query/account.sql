@@ -28,3 +28,6 @@ RETURNING *;
 -- name: DeleteAccount :exec
 DELETE FROM accounts
 WHERE id = $1;
+
+-- name: TotalRows :one
+SELECT COUNT(id) from accounts;
