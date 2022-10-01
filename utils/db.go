@@ -1,6 +1,7 @@
 package utils
 
 import (
+	"database/sql"
 	"log"
 	"os"
 
@@ -26,3 +27,4 @@ var (
 )
 
 var TestQueries *db.Queries
+var TestDB *sql.DB

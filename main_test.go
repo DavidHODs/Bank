@@ -13,12 +13,14 @@ import (
 )
 
 func TestMain(m *testing.M) {
-	conn, err := sql.Open(utils.DbDriver, utils.DbSource)
+	var err error
+
+	utils.TestDB, err = sql.Open(utils.DbDriver, utils.DbSource)
 	if err != nil {
 		log.Fatal("could not connect to database:", err)
 	}
 
-	utils.TestQueries = db.New(conn)
+	utils.TestQueries = db.New(utils.TestDB)
 
 	os.Exit(m.Run())
 }
